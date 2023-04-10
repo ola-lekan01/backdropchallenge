@@ -1,0 +1,24 @@
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+directive @unique on FIELD_DEFINITION
+
+type AppUser {
+    accountName: String!
+    accountNumber: String!
+    bankCode: String!
+    id: ID
+    isVerified: Boolean
+}
+
+" The Root Mutation for the application"
+type Mutation {
+    addAccountUser(accountName: String!, accountNumber: String!, bankCode: String!): AppUser!
+}
+
+" The Root Query for the application"
+type Query {
+    getAccountName(accountNumber: String!, bankCode: String!): AppUser!
+}
